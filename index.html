@@ -1,0 +1,1180 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Surbhi Kansal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #0d1820;
+      --bg2:      #111f2d;
+      --line:     rgba(255,255,255,0.1);
+      --white:    #ffffff;
+      --off:      #e8edf2;
+      --muted:    #7a8fa3;
+      --dim:      #3a4f63;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--white);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1.25rem 6%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(13,24,32,0.95);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-logo img {
+      height: 32px;
+      width: auto;
+      display: block;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 2.5rem;
+    }
+
+    .nav-links a {
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--white); }
+
+    /* ─── HERO ─── */
+    #hero {
+      padding: 0;
+      border-bottom: 1px solid var(--line);
+      overflow: hidden;
+    }
+
+    .hero-body {
+      display: grid;
+      grid-template-columns: 440px 1fr;
+      align-items: start;
+    }
+
+    /* Photo column — left */
+    .hero-right {
+      border-right: 1px solid var(--line);
+      padding-top: 8rem;
+      padding-left: 6vw;
+    }
+
+    .hero-photo {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+    }
+
+    /* Name column — right */
+    .hero-left {
+      padding: 8rem 6% 3rem 4rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hero-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 4rem;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .hero-meta { text-align: right; }
+    .hero-meta p {
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 500;
+      line-height: 1.8;
+    }
+
+    h1.hero-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(4rem, 7vw, 6.5rem);
+      font-weight: 900;
+      line-height: 0.95;
+      letter-spacing: -0.02em;
+      color: var(--white);
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-company {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero-company img {
+      height: 28px;
+      width: auto;
+      display: block;
+      mix-blend-mode: luminosity;
+      opacity: 0.5;
+    }
+
+    .hero-company span {
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    /* Full-width bottom strip */
+    .hero-bottom {
+      border-top: 1px solid var(--line);
+      padding: 2.5rem 6%;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .hero-bottom-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 1rem;
+    }
+
+    .hero-role {
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--off);
+      line-height: 1.7;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-desc {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.85;
+    }
+
+    .hero-badges {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+    }
+
+    .hero-badges img {
+      height: 40px;
+      width: auto;
+      background: #fff;
+      border-radius: 4px;
+      padding: 5px 10px;
+      display: block;
+    }
+
+    .hero-contact {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .hero-contact-item {
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      font-weight: 400;
+      transition: color 0.2s;
+    }
+
+    .hero-contact-item:hover { color: var(--white); }
+
+    .hero-contact-item + .hero-contact-item::before {
+      content: '·';
+      margin: 0 0.85rem;
+      color: var(--dim);
+    }
+
+
+    /* ─── SECTION SHELL ─── */
+    .section {
+      padding: 6rem 6%;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 3rem;
+      margin-bottom: 4rem;
+    }
+
+    .section-num {
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 500;
+      padding-top: 0.25rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.15;
+    }
+
+    .section-sub {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.8;
+      max-width: 500px;
+      margin-top: 0.75rem;
+    }
+
+    /* ─── WHY / ABOUT ─── */
+    #why { background: var(--bg2); }
+
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--line);
+      margin-bottom: 4rem;
+    }
+
+    .pillar {
+      padding: 2.5rem 2rem;
+      border-right: 1px solid var(--line);
+    }
+
+    .pillar:first-child { padding-left: 0; }
+    .pillar:last-child { border-right: none; }
+
+    .pillar .p-num {
+      font-size: 0.62rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .pillar h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.6rem;
+    }
+
+    .pillar p {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .reasons {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      border-top: 1px solid var(--line);
+      border-left: 1px solid var(--line);
+    }
+
+    .reason {
+      padding: 1.6rem 2rem;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      display: grid;
+      grid-template-columns: 28px 1fr;
+      gap: 1rem;
+    }
+
+    .reason .r-num {
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      font-weight: 500;
+      padding-top: 0.2rem;
+    }
+
+    .reason h4 {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 0.3rem;
+    }
+
+    .reason p {
+      font-size: 0.78rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .orgs {
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--line);
+      display: flex;
+      align-items: baseline;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .orgs-label {
+      font-size: 0.62rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 500;
+      flex-shrink: 0;
+    }
+
+    .orgs-items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 2rem;
+    }
+
+    .orgs-items span {
+      font-size: 0.82rem;
+      color: var(--dim);
+      font-weight: 500;
+    }
+
+    /* ─── PRIORITIES ─── */
+    #priorities { background: var(--bg); }
+
+    .priorities {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--line);
+      border-left: 1px solid var(--line);
+    }
+
+    .priority {
+      padding: 2.2rem 2rem;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .priority h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+
+    .priority p {
+      font-size: 0.78rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* ─── INITIATIVES ─── */
+    #initiatives { background: var(--bg2); }
+
+    .initiatives {
+      border-top: 1px solid var(--line);
+    }
+
+    .initiative {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .init-left {
+      padding: 2rem 2rem 2rem 0;
+      border-right: 1px solid var(--line);
+    }
+
+    .init-cat {
+      font-size: 0.62rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 500;
+      margin-bottom: 0.6rem;
+    }
+
+    .init-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.2;
+    }
+
+    .init-right {
+      padding: 2rem 0 2rem 2rem;
+      display: flex;
+      align-items: center;
+    }
+
+    .init-right p {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.75;
+      max-width: 560px;
+    }
+
+    /* ─── SERVICES ─── */
+    #services { background: var(--bg); }
+
+    .services {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      border-top: 1px solid var(--line);
+      border-left: 1px solid var(--line);
+      margin-bottom: 3rem;
+    }
+
+    .service {
+      padding: 2.2rem 2rem;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .service .s-num {
+      font-size: 0.62rem;
+      letter-spacing: 0.14em;
+      color: var(--muted);
+      font-weight: 500;
+      margin-bottom: 0.8rem;
+    }
+
+    .service h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+
+    .service p {
+      font-size: 0.78rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .tech-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border-top: 1px solid var(--line);
+      border-left: 1px solid var(--line);
+    }
+
+    .tech-block {
+      padding: 1.8rem 2rem;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .tech-block h4 {
+      font-size: 0.62rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .tag {
+      font-size: 0.74rem;
+      color: var(--off);
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--line);
+      padding: 0.25rem 0.75rem;
+      border-radius: 2px;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+    }
+
+    /* ─── NETWORK ─── */
+    #network { background: var(--bg2); }
+
+    .network-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--line);
+      border-left: 1px solid var(--line);
+    }
+
+    .network-item {
+      padding: 1.8rem 2rem;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      font-size: 0.85rem;
+      color: var(--muted);
+      font-weight: 400;
+    }
+
+    /* ─── CTA ─── */
+    #contact {
+      padding: 0;
+      border-bottom: none;
+    }
+
+    .cta {
+      padding: 6rem 6%;
+      background: var(--bg);
+      border-top: 1px solid var(--line);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: end;
+      gap: 4rem;
+    }
+
+    .cta-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+    }
+
+    .cta h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.2;
+      max-width: 560px;
+    }
+
+    .cta-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 1.5rem;
+    }
+
+    .cta-who strong {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--white);
+    }
+
+    .cta-who span {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .cta-badges {
+      display: flex;
+      gap: 0.6rem;
+    }
+
+    .cta-badges img {
+      height: 36px;
+      background: white;
+      border-radius: 3px;
+      padding: 4px 8px;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      padding: 1.5rem 6%;
+      border-top: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    footer p {
+      font-size: 0.68rem;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+    }
+
+    footer img {
+      height: 24px;
+      width: auto;
+      opacity: 0.6;
+    }
+
+    /* ─── HAMBURGER ─── */
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 22px;
+      height: 1px;
+      background: var(--muted);
+      transition: transform 0.25s, opacity 0.25s, background 0.2s;
+    }
+
+    .nav-toggle:hover span { background: var(--white); }
+
+    .nav-toggle.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; }
+    .nav-toggle.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+    /* Mobile drawer */
+    .nav-drawer {
+      display: none;
+      position: fixed;
+      top: 57px; left: 0; right: 0;
+      background: rgba(13,24,32,0.98);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--line);
+      z-index: 99;
+      padding: 0 6%;
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+    }
+
+    .nav-drawer.open {
+      max-height: 360px;
+      padding: 1.5rem 6%;
+    }
+
+    .nav-drawer ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .nav-drawer li { border-bottom: 1px solid var(--line); }
+    .nav-drawer li:last-child { border-bottom: none; }
+
+    .nav-drawer a {
+      display: block;
+      padding: 1rem 0;
+      font-size: 0.75rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-drawer a:hover { color: var(--white); }
+
+    /* ─── RESPONSIVE ─── */
+
+    /* Tablet — 860px */
+    @media (max-width: 860px) {
+      nav { padding: 1rem 5%; }
+      .nav-links { display: none; }
+      .nav-toggle { display: flex; }
+      .nav-drawer { display: block; }
+
+      #hero { padding: 7rem 5% 4.5rem; }
+      .hero-header { flex-direction: column; gap: 0.5rem; margin-bottom: 3rem; }
+      .hero-meta { text-align: left; }
+      .hero-body { grid-template-columns: 1fr; }
+      .hero-right { border-right: none; border-bottom: 1px solid var(--line); padding-top: 5rem; }
+      .hero-photo { height: 260px; }
+      .hero-left { padding: 2.5rem 5% 2.5rem; }
+      .hero-header { margin-bottom: 2rem; }
+      .hero-bottom { grid-template-columns: 1fr; gap: 1.5rem; padding: 2rem 5%; }
+      .hero-bottom-right { align-items: flex-start; }
+
+      .section { padding: 4rem 5%; }
+      .section-head { grid-template-columns: 1fr; gap: 0.75rem; margin-bottom: 2.5rem; }
+
+      .pillars { grid-template-columns: 1fr; }
+      .pillar {
+        padding: 1.8rem 0;
+        border-right: none;
+        border-bottom: 1px solid var(--line);
+      }
+      .pillar:last-child { border-bottom: none; }
+
+      .reasons { grid-template-columns: 1fr; }
+      .reason { border-right: none; }
+
+      .priorities { grid-template-columns: repeat(2, 1fr); }
+
+      .initiative { grid-template-columns: 1fr; }
+      .init-left {
+        border-right: none;
+        border-bottom: 1px solid var(--line);
+        padding: 1.5rem 0;
+      }
+      .init-right { padding: 1.5rem 0; }
+
+      .services { grid-template-columns: 1fr; }
+      .service { border-right: none; }
+
+      .tech-row { grid-template-columns: 1fr; }
+      .tech-block { border-right: none; }
+
+      .network-grid { grid-template-columns: repeat(2, 1fr); }
+      .network-item:nth-child(2n) { border-right: none; }
+
+      .cta { grid-template-columns: 1fr; gap: 2.5rem; padding: 4rem 5%; }
+      .cta-right { align-items: flex-start; }
+
+      footer { padding: 1.5rem 5%; }
+    }
+
+    /* Mobile — 540px */
+    @media (max-width: 540px) {
+      #hero { padding: 6rem 5% 3.5rem; }
+      .hero-header { margin-bottom: 2.5rem; }
+      .hero-left { padding: 5rem 5% 3rem; }
+      h1.hero-name { font-size: clamp(3rem, 12vw, 4.5rem); }
+      .hero-badges img { height: 34px; }
+
+      .section { padding: 3rem 5%; }
+      .section-head { margin-bottom: 2rem; }
+
+      .priorities { grid-template-columns: 1fr; }
+
+      .network-grid { grid-template-columns: 1fr; }
+      .network-item { border-right: none; }
+
+      .reasons { border-left: none; }
+      .reason { grid-template-columns: 24px 1fr; gap: 0.75rem; padding: 1.2rem 0; border-left: none; border-right: none; }
+
+      .services { border-left: none; }
+      .service { padding: 1.6rem 0; border-left: none; border-right: none; }
+
+      .priorities { border-left: none; }
+      .priority { padding: 1.6rem 0; border-left: none; border-right: none; }
+
+      .network-grid { border-left: none; }
+      .network-item { padding: 1.2rem 0; border-left: none; border-right: none; }
+
+      .tech-row { border-left: none; }
+      .tech-block { padding: 1.4rem 0; border-left: none; border-right: none; }
+
+      .cta h2 { font-size: 1.4rem; }
+
+      footer { flex-direction: column; align-items: flex-start; gap: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <span style="font-weight: 700; font-size: 0.9rem; color: var(--white);">Surbhi Kansal</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#why">About</a></li>
+    <li><a href="#priorities">Priorities</a></li>
+    <li><a href="#initiatives">Initiatives</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#network">Network</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="nav-toggle" aria-label="Menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE DRAWER -->
+<div class="nav-drawer" id="nav-drawer">
+  <ul>
+    <li><a href="#why">About</a></li>
+    <li><a href="#priorities">Priorities</a></li>
+    <li><a href="#initiatives">Initiatives</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#network">Network</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <!-- Top: photo (left) + name/header (right) -->
+  <div class="hero-body">
+
+    <div class="hero-right">
+      <img class="hero-photo" src="surbhi.png" alt="Surbhi Kansal" />
+    </div>
+
+    <div class="hero-left">
+      <div class="hero-header">
+        <p class="hero-eyebrow">SK &nbsp;—&nbsp; Professional Portfolio</p>
+        <div class="hero-meta">
+          <p>Capability &amp; Engagement Profile</p>
+          <p>Technology · Governance · Ecosystems</p>
+        </div>
+      </div>
+
+      <h1 class="hero-name">Surbhi<br/>Kansal</h1>
+
+      <div class="hero-company">
+        <img src="commhawk.png" alt="CommHawk Technologies" />
+        <span>Founder &nbsp;·&nbsp; CommHawk Technologies</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bottom: full width -->
+  <div class="hero-bottom">
+    <div class="hero-bottom-left">
+      <p class="hero-role">Technology Entrepreneur · Digital Transformation Consultant · Ecosystem Builder</p>
+      <p class="hero-desc">Bridging government, industry and startups to deliver measurable digital impact.</p>
+    </div>
+    <div class="hero-bottom-right">
+      <div class="hero-badges">
+        <img src="OIP (3).jpeg" alt="DPIIT Startup India" />
+        <img src="OIP (4).jpeg" alt="Startup Bihar" />
+      </div>
+      <div class="hero-contact">
+        <a href="tel:+919654314751" class="hero-contact-item">+91 9654314751</a>
+        <a href="https://commhawk.in/" target="_blank" rel="noopener" class="hero-contact-item">commhawk.in</a>
+        <a href="https://thebefin.com/" target="_blank" rel="noopener" class="hero-contact-item">thebefin.com</a>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- WHY I MATTER -->
+<section class="section" id="why">
+  <div class="section-head">
+    <p class="section-num">01 &nbsp;—&nbsp; Why I Matter</p>
+    <div>
+      <h2 class="section-title">8+ Years Delivering Across<br/>Government, Industry &amp; Startups</h2>
+      <p class="section-sub">Turning policy intent into working technology.</p>
+    </div>
+  </div>
+
+  <div class="pillars">
+    <div class="pillar">
+      <p class="p-num">01</p>
+      <h3>Government Projects</h3>
+      <p>Project execution, stakeholder coordination and digital initiatives across public departments.</p>
+    </div>
+    <div class="pillar">
+      <p class="p-num">02</p>
+      <h3>Industry Associations</h3>
+      <p>Policy discussions, industry engagement and on-ground program implementation.</p>
+    </div>
+    <div class="pillar">
+      <p class="p-num">03</p>
+      <h3>Startup Ecosystems</h3>
+      <p>Product development, innovation and fundraising readiness for early-stage ventures.</p>
+    </div>
+  </div>
+
+  <div class="reasons">
+    <div class="reason">
+      <span class="r-num">01</span>
+      <div>
+        <h4>Bridge Government &amp; Technology</h4>
+        <p>Fluent in both policy objectives and technology implementation.</p>
+      </div>
+    </div>
+    <div class="reason">
+      <span class="r-num">02</span>
+      <div>
+        <h4>Execution-Focused Approach</h4>
+        <p>Carrying ideas from concept through to implementation.</p>
+      </div>
+    </div>
+    <div class="reason">
+      <span class="r-num">03</span>
+      <div>
+        <h4>Startup Agility</h4>
+        <p>Fast decision-making and adaptive, innovative thinking.</p>
+      </div>
+    </div>
+    <div class="reason">
+      <span class="r-num">04</span>
+      <div>
+        <h4>Multi-Stakeholder Network</h4>
+        <p>Government, startups, academia and industry connected.</p>
+      </div>
+    </div>
+    <div class="reason">
+      <span class="r-num">05</span>
+      <div>
+        <h4>Solution-Oriented Mindset</h4>
+        <p>Focused on practical and measurable outcomes.</p>
+      </div>
+    </div>
+    <div class="reason">
+      <span class="r-num">06</span>
+      <div>
+        <h4>Hands-On Delivery</h4>
+        <p>Present from planning through to adoption and impact.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="orgs">
+    <span class="orgs-label">Organisations</span>
+    <div class="orgs-items">
+      <span>PHD Chamber of Commerce</span>
+      <span>IICA</span>
+      <span>CEAMA</span>
+      <span>Dept. of IT, Govt. of Bihar</span>
+      <span>GCCI</span>
+    </div>
+  </div>
+</section>
+
+<!-- NATIONAL PRIORITIES -->
+<section class="section" id="priorities">
+  <div class="section-head">
+    <p class="section-num">02 &nbsp;—&nbsp; National &amp; State Priorities</p>
+    <div>
+      <h2 class="section-title">Aligned with India's<br/>Digital &amp; Entrepreneurial Future</h2>
+    </div>
+  </div>
+
+  <div class="priorities">
+    <div class="priority">
+      <h3>Digital India</h3>
+      <p>Technology-driven service delivery for citizens and institutions.</p>
+    </div>
+    <div class="priority">
+      <h3>Startup India</h3>
+      <p>Supporting innovation and entrepreneurship at the grassroots.</p>
+    </div>
+    <div class="priority">
+      <h3>Skill India</h3>
+      <p>Promoting employability and digital readiness among youth.</p>
+    </div>
+    <div class="priority">
+      <h3>Financial Inclusion</h3>
+      <p>Building awareness of and access to financial systems.</p>
+    </div>
+    <div class="priority">
+      <h3>Women Entrepreneurship</h3>
+      <p>Encouraging participation in innovation-led ventures.</p>
+    </div>
+    <div class="priority">
+      <h3>Youth Empowerment</h3>
+      <p>Creating opportunity through technology and knowledge.</p>
+    </div>
+  </div>
+</section>
+
+<!-- KEY INITIATIVES -->
+<section class="section" id="initiatives">
+  <div class="section-head">
+    <p class="section-num">03 &nbsp;—&nbsp; Key Initiatives</p>
+    <div>
+      <h2 class="section-title">Ventures Built for<br/>Measurable Change</h2>
+    </div>
+  </div>
+
+  <div class="initiatives">
+    <div class="initiative">
+      <div class="init-left">
+        <p class="init-cat">Financial Literacy</p>
+        <p class="init-name">BeFin</p>
+      </div>
+      <div class="init-right">
+        <p>Building financial awareness among youth and families — translating financial concepts into everyday confidence and capability.</p>
+      </div>
+    </div>
+    <div class="initiative">
+      <div class="init-left">
+        <p class="init-cat">Community Digitisation</p>
+        <p class="init-name">Bihar Tailik Sahu Sabha</p>
+      </div>
+      <div class="init-right">
+        <p>Digital transformation of community services and engagement — bringing a traditional community organisation onto modern digital rails.</p>
+      </div>
+    </div>
+    <div class="initiative">
+      <div class="init-left">
+        <p class="init-cat">Employment Innovation</p>
+        <p class="init-name">KAAMlee</p>
+      </div>
+      <div class="init-right">
+        <p>A technology platform that simplifies job discovery, connecting opportunity with people who are ready to work.</p>
+      </div>
+    </div>
+    <div class="initiative">
+      <div class="init-left">
+        <p class="init-cat">Startup Ecosystem</p>
+        <p class="init-name">In Progress</p>
+      </div>
+      <div class="init-right">
+        <p>Ongoing work toward innovation and incubation initiatives that strengthen the wider entrepreneurial ecosystem.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SUPPORTING GOVERNMENT -->
+<section class="section" id="services">
+  <div class="section-head">
+    <p class="section-num">04 &nbsp;—&nbsp; Supporting Government &amp; Institutions</p>
+    <div>
+      <h2 class="section-title">Practical, End-to-End Support</h2>
+      <p class="section-sub">For government bodies, institutions and community organisations.</p>
+    </div>
+  </div>
+
+  <div class="services">
+    <div class="service">
+      <p class="s-num">01</p>
+      <h3>Financial Literacy Programs</h3>
+      <p>Designed for schools, colleges and youth communities.</p>
+    </div>
+    <div class="service">
+      <p class="s-num">02</p>
+      <h3>Community Digitisation</h3>
+      <p>For associations, boards and community groups.</p>
+    </div>
+    <div class="service">
+      <p class="s-num">03</p>
+      <h3>Startup Ecosystem Development</h3>
+      <p>Incubation support, innovation programs and hackathons.</p>
+    </div>
+    <div class="service">
+      <p class="s-num">04</p>
+      <h3>Capacity &amp; Technology Delivery</h3>
+      <p>End-to-end solutions paired with hands-on adoption support.</p>
+    </div>
+  </div>
+
+  <div class="tech-row">
+    <div class="tech-block">
+      <h4>Technology Solutions</h4>
+      <div class="tags">
+        <span class="tag">CRM</span>
+        <span class="tag">ERP</span>
+        <span class="tag">Citizen Portals</span>
+        <span class="tag">Mobile Apps</span>
+        <span class="tag">Automation</span>
+        <span class="tag">AI</span>
+      </div>
+    </div>
+    <div class="tech-block">
+      <h4>Capacity Building</h4>
+      <div class="tags">
+        <span class="tag">Training</span>
+        <span class="tag">Workshops</span>
+        <span class="tag">Digital Awareness</span>
+        <span class="tag">Technology Adoption</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NETWORK -->
+<section class="section" id="network">
+  <div class="section-head">
+    <p class="section-num">05 &nbsp;—&nbsp; Network &amp; Collaboration</p>
+    <div>
+      <h2 class="section-title">Connected Across Every Sector</h2>
+    </div>
+  </div>
+
+  <div class="network-grid">
+    <div class="network-item">Government Departments</div>
+    <div class="network-item">Universities</div>
+    <div class="network-item">Skill Development Missions</div>
+    <div class="network-item">CSR Programs</div>
+    <div class="network-item">Incubators &amp; Startup Programs</div>
+    <div class="network-item">Community Organisations</div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<div id="contact">
+  <div class="cta">
+    <div>
+      <p class="cta-label">Let's Work Together</p>
+      <h2>Available for collaboration with government, institutions and ecosystem partners.</h2>
+    </div>
+    <div class="cta-right">
+      <div class="cta-who">
+        <strong>Surbhi Kansal</strong>
+        <span>Founder, CommHawk Technologies Pvt Ltd</span>
+      </div>
+      <div class="cta-badges">
+        <img src="OIP (3).jpeg" alt="DPIIT Startup India" />
+        <img src="OIP (4).jpeg" alt="Startup Bihar" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>&copy; 2025 Surbhi Kansal &nbsp;·&nbsp; CommHawk Technologies Pvt Ltd</p>
+</footer>
+
+<script>
+  const toggle = document.querySelector('.nav-toggle');
+  const drawer = document.getElementById('nav-drawer');
+
+  toggle.addEventListener('click', () => {
+    const open = drawer.classList.toggle('open');
+    toggle.classList.toggle('open', open);
+    toggle.setAttribute('aria-expanded', open);
+  });
+
+  drawer.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      drawer.classList.remove('open');
+      toggle.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+</script>
+</body>
+</html>
